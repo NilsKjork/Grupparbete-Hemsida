@@ -6,12 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1 id="brand_name">"insert brand name"</h1>
-    <input type="text" name="search_field" placeholder="Sök skåp...">
+    <h1 id="brand_name">Skåps AB</h1>
+    <input id="search_field" type="text" name="search_field" placeholder="Sök skåp...">
 
+    <!-- Borde kanske skapa product och product wrappers automatiskt i js så dom inte finns on js int finns, och så kan man lättare lägga till nya genom att bara lägga till info i en array i js. om js inte finns så behöver vi ett annat sätt att nå productsidorna -->
+
+    <div id="product_wrapper1" class="product_wrapper"> 
+        <div id="product1" class="product"></div>
+        <div id="product2" class="product"></div>
+        <div id="product3" class="product"></div>
+        <div id="product4" class="product"></div>
+    </div>
+    <div id="product_wrapper2" class="product_wrapper">
+        <div id="product5" class="product"></div>
+        <div id="product6" class="product"></div>
+        <div id="product7" class="product"></div>
+        <div id="product8" class="product"></div>
+    </div>
 
 
 </body>
