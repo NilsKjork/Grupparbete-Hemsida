@@ -19,6 +19,10 @@
     height: 30px;
     width: 350px;
 }
+#search_field::placeholder{
+    color: #000000;
+    opacity: 0.6;
+}
 #product_wrapper1{
     grid-area: pw1;
 }
