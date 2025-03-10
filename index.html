@@ -9,11 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
+    <script src="jjavascript/javascript.js"></script>
 </head>
 
 <body>
+    <div id="shadow"></div>
     <h1 id="brand_name">Skåps AB</h1>
     <input id="search_field" type="text" name="search_field" placeholder="Sök skåp...">
+    <div id="searchAnchor">
+        <div id="searchWrapper">
+            <article class="searchOption">
+                <div class="image"></div>
+                <div class = "searchProductInfo">
+                    <p class="name"></p>
+                    <p class="description"></p>
+                    <p class="cost"></p>
+                </div>
+            </article>
+
+            <article class="searchOption">
+                <div class="image"></div>
+                <div class = "searchProductInfo">
+                    <p class="name"></p>
+                    <p class="description"></p>
+                    <p class="cost"></p>
+                </div>
+            </article>
+        </div>
+    </div>
 
     <!-- Borde kanske skapa product och product wrappers automatiskt i js så dom inte finns on js int finns, och så kan man lättare lägga till nya genom att bara lägga till info i en array i js. om js inte finns så behöver vi ett annat sätt att nå productsidorna -->
 
