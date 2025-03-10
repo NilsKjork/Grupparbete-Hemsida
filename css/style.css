@@ -10,6 +10,8 @@
     grid-area: sf;
     background-color: #AC9E9E;
     color: #000000;
+    border: none;
+    outline: 2px solid #000000;
     font-family: 'Segoe UI', 'Arial Rounded MT Bold', sans-serif;
     font-weight: 500;
     font-style: italic;
