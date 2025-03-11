@@ -2,7 +2,11 @@ let searchResultElementParents = [];
         let shadow = undefined;
         const products = [
             {href:"products/hylla.html", name: "Hylla", description:"Väldigt cool hylla", cost:"20"},
-            {href:"products/annanHylla.html", name: "Annan hylla", description:"Även väldigt cool hylla", cost:"25"}
+            {href:"products/annanHylla.html", name: "Annan hylla", description:"Även väldigt cool hylla", cost:"25"},
+            {href:"products/hyllBil.html", name: "Hyll Bil", description:"Som en skåp bil. Men en hylla", cost:"205"},
+            {href:"products/hyllo.html", name: "Hyllo", description:"En kvinlig hylla", cost:"25"},
+            {href:"products/hkåpBil.html", name: "Skåp bil", description:"Bara en skåp bil", cost:"70"},
+            {href:"products/coughingBaby.html", name: "Coughing baby", description:"Defeted a atom bomb!", cost:"420"}
         ];
 
         let searchWrapper = undefined;

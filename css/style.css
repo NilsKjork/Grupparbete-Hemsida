@@ -1,6 +1,7 @@
 *{
     margin: 0;
 }
+
 #brand_name{
     grid-area: bn;
     color: #483C32;
@@ -8,7 +9,7 @@
 }
 #search_field{
     grid-area: sf;
-    background-color: #AC9E9E;
+    /*background-color: #AC9E9E;*/
     background-color: #FFFFFF;
     color: #000000;
     border: none;
@@ -60,7 +61,7 @@
     display: none;
     background: black;
     z-index: 99;
-    opacity: 20%;
+    opacity: 10%;
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -90,8 +91,10 @@ body{
     display: grid;
     height: 100vh;
     width: 100vw;
+    padding-left: 16px;
+    padding-right: 16px;
     grid-template-columns: 30% 70%;
-    grid-template-rows: 15% 15% 1% 34% 35%;
+    grid-template-rows: 10% 4% 1% 42.5% 42.5%;
     grid-template-areas: 
     "bn bn"
     "sf sf"
