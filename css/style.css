@@ -9,7 +9,6 @@
 }
 #search_field{
     grid-area: sf;
-    /*background-color: #AC9E9E;*/
     background-color: #FFFFFF;
     color: #000000;
     border: none;
@@ -65,6 +64,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
+    left: 0;
 }
 #product_wrapper1{
     grid-area: pw1;
@@ -76,12 +76,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100vw;
+    width: 80vw;
     margin-top: 20px;
 }
 .product{
-    width: 20vw;
-    height: 20vw;
+    width: 13vw;
+    height: 13vw;
     background-color: #D9D9D9;
     outline: 3px solid #000000;
     margin-top: 3vw;
@@ -89,8 +89,7 @@
 body{
     background-color: #FAF0E6;
     display: grid;
-    height: 100vh;
-    width: 100vw;
+    height: 90vh;
     padding-left: 16px;
     padding-right: 16px;
     grid-template-columns: 30% 70%;
