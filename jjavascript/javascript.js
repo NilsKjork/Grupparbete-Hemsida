@@ -1,5 +1,6 @@
 let searchResultElementParents = [];
 let shadow = undefined;
+let timer = 0;
 const products = [
     { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20" },
     { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" },
@@ -12,13 +13,15 @@ const products = [
 let searchWrapper = undefined;
 
 function applySearchResult(index, searchResult) {
-    searchWrapper.style.display = "flex";
-    searchResultElementParents[index].parent.style.display = "flex";
-    searchResultElementParents[index].imageElement.style.background = 'red';
-    searchResultElementParents[index].nameElement.innerText = searchResult.name;
-    searchResultElementParents[index].nameElement.href = searchResult.href;
-    searchResultElementParents[index].descriptionElement.innerText = searchResult.description;
-    searchResultElementParents[index].costElement.innerText = searchResult.cost + " SEK";
+    if(searchResultElementParents[index] != null){
+        searchWrapper.style.display = "flex";
+        searchResultElementParents[index].parent.style.display = 'flex';
+        searchResultElementParents[index].imageElement.style.background = 'red';
+        searchResultElementParents[index].nameElement.innerText = searchResult.name;
+        searchResultElementParents[index].nameElement.href = searchResult;
+        searchResultElementParents[index].descriptionElement.innerText = searchResult.description;
+        searchResultElementParents[index].costElement.innerText = searchResult.cost + " SEK";
+    }
 }
 function hideSearchResult(index) {
     searchResultElementParents[index].parent.style.display = "none";
@@ -55,6 +58,8 @@ function onSearch(event) {
     if (query.length == 0) {
         for (let i = 0; i < products.length; i++) {
             applySearchResult(i, products[i]);
+
+            console.log(products[i].href);
         }
     }
     else {
@@ -77,14 +82,27 @@ function onSearchFocus(event) {
     }
 }
 
-function onSearchBlur(event) {
-    searchWrapper.style.display = "none";
-    shadow.style.display = "none";
-}
-
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Create a new anchor element
+const newLink = document.createElement('a');
+
+// Set href and link text
+newLink.href = products[0].href;
+newLink.textContent = 'Visit Example';
+
+// Add to the DOM
+document.body.appendChild(newLink);
+
+
     searchWrapper = document.getElementById('searchWrapper');
     shadow = document.getElementById('shadow');
+    document.addEventListener('click', (event) => {
+        if (!searchWrapper.contains(event.target) && !searchBar.contains(event.target)) {
+            searchWrapper.style.display = "none";
+            shadow.style.display = "none";
+        }
+    });
 
     for (let parent of searchWrapper.children) {
         const obj = {
@@ -97,8 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         searchResultElementParents.push(obj);
     }
-
-    console.log(searchResultElementParents);
 
     const searchBar = document.getElementById('search_field');
     searchBar.addEventListener("input", onSearch);
