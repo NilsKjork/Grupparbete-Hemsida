@@ -18,7 +18,7 @@ function applySearchResult(index, searchResult) {
         searchResultElementParents[index].parent.style.display = 'flex';
         searchResultElementParents[index].imageElement.style.background = 'red';
         searchResultElementParents[index].nameElement.innerText = searchResult.name;
-        searchResultElementParents[index].nameElement.href = searchResult;
+        searchResultElementParents[index].nameElement.href = searchResult.href;
         searchResultElementParents[index].descriptionElement.innerText = searchResult.description;
         searchResultElementParents[index].costElement.innerText = searchResult.cost + " SEK";
     }
@@ -83,18 +83,7 @@ function onSearchFocus(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Create a new anchor element
-const newLink = document.createElement('a');
-
-// Set href and link text
-newLink.href = products[0].href;
-newLink.textContent = 'Visit Example';
-
-// Add to the DOM
-document.body.appendChild(newLink);
-
-
+    
     searchWrapper = document.getElementById('searchWrapper');
     shadow = document.getElementById('shadow');
     document.addEventListener('click', (event) => {
