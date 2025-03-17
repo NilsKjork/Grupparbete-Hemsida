@@ -9,11 +9,13 @@ function addSparadeVaror(productArray){
         descriptionElement: productArray.descriptionElement.innerText,
         costElement: productArray.costElement.innerText
     }
+    if (sparadeVaror != null){
     sparadeVaror.forEach(sparad => {
         if (sparad.nameElement == obj.nameElement){
             hasCopy = true;
         }
     });
+    }
     if (hasCopy == false){
         sparadeVaror.push(obj);
         localStorage.setItem("sparadeVaror", sparadeVaror);
@@ -23,6 +25,10 @@ function addSparadeVaror(productArray){
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    console.log(localStorage.getItem("sparadeVaror"))
+    if (localStorage.getItem("sparadeVaror") != null){
+        sparadeVaror = localStorage.getItem("sparadeVaror");
+    }
     const elements = document.querySelectorAll(".favoriteButton");
     elements.forEach(element => {
         element.addEventListener('click', function() {
