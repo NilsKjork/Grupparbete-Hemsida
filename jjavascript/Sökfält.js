@@ -1,13 +1,14 @@
 let searchResultElementParents = [];
 let shadow = undefined;
 let timer = 0;
+let searchBar = null;
 const products = [
-    { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20" },
-    { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" },
-    { href: "products/hyllBil.html", name: "Hyll Bil", description: "Som en skåp bil. Men en hylla", cost: "205" },
-    { href: "products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" },
-    { href: "products/hkåpBil.html", name: "Skåp bil", description: "Bara en skåp bil", cost: "70" },
-    { href: "products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" }
+    { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/skåp_bil.png" },
+    { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/skåp_bil.png" },
+    { href: "products/hyllBil.html", name: "Hyll Bil", description: "Som en skåp bil. Men en hylla", cost: "205" , image: "bilder/skåp_bil.png" },
+    { href: "products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" , image: "bilder/skåp_bil.png" },
+    { href: "products/skåpBil.html", name: "Skåp bil", description: "Bara en skåp bil", cost: "70" , image: "bilder/skåp_bil.png" },
+    { href: "products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" , image: "bilder/baby.png" }
 ];
 
 let searchWrapper = undefined;
@@ -16,7 +17,7 @@ function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
         searchWrapper.style.display = "flex";
         searchResultElementParents[index].parent.style.display = 'flex';
-        searchResultElementParents[index].imageElement.style.background = 'red';
+        searchResultElementParents[index].imageElement.src = searchResult.image;
         searchResultElementParents[index].nameElement.innerText = searchResult.name;
         searchResultElementParents[index].nameElement.href = searchResult.href;
         searchResultElementParents[index].descriptionElement.innerText = searchResult.description;
@@ -77,13 +78,11 @@ function onSearch(event) {
 function onSearchFocus(event) {
     searchWrapper.style.display = "flex";
     shadow.style.display = "block";
-    for (let i = 0; i < products.length; i++) {
-        applySearchResult(i, products[i]);
-    }
+    onSearch(searchBar.innerText);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     searchWrapper = document.getElementById('searchWrapper');
     shadow = document.getElementById('shadow');
     document.addEventListener('click', (event) => {
@@ -105,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
         searchResultElementParents.push(obj);
     }
 
-    const searchBar = document.getElementById('search_field');
+    searchBar = document.getElementById('search_field');
     searchBar.addEventListener("input", onSearch);
     searchBar.addEventListener("focus", onSearchFocus);
-    searchBar.addEventListener("blur", onSearchBlur);
+
 });

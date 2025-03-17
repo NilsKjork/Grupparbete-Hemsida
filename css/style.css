@@ -47,10 +47,17 @@
     background-color: aquamarine;
     display: none;
 }
+.favoriteButton{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+}
 .image{
     height: 100px;
     width: 100px;
-    background-color: blue;
     border-radius: 4px;
 }
 .searchProductInfo{
