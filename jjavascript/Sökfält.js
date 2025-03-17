@@ -30,8 +30,13 @@ function hideSearchResult(index) {
         searchWrapper.style.display = "none";
     }
 }
+
 function onSearch(event) {
     const query = event.target.value.toLowerCase();
+    search(query);
+}
+
+function search(query) {
     let foundProducts = [];
 
     if (query.length > 0) {
@@ -59,8 +64,6 @@ function onSearch(event) {
     if (query.length == 0) {
         for (let i = 0; i < products.length; i++) {
             applySearchResult(i, products[i]);
-
-            console.log(products[i].href);
         }
     }
     else {
@@ -71,14 +74,13 @@ function onSearch(event) {
                 hideSearchResult(i);
             }
         }
-        console.log(foundProducts);
     }
 }
 
 function onSearchFocus(event) {
     searchWrapper.style.display = "flex";
     shadow.style.display = "block";
-    onSearch(searchBar.innerText);
+    search(searchBar.value);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
