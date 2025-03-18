@@ -24,6 +24,44 @@ function addSparadeVaror(productArray){
     }
 }
 
+function drawSparadeVaror(){
+    console.log("drawing")
+    const searchWrapper = document.createElement("div");
+    document.body.appendChild(searchWrapper);
+    searchWrapper.classList.add("searchWrapper");
+    searchWrapper.style.display = 'flex';
+    sparadeVaror.forEach(element => {
+        const searchOption = document.createElement("article");
+        searchWrapper.appendChild(searchOption);
+        searchOption.classList.add("searchOption");
+        searchOption.style.display = 'flex';
+
+        const image = document.createElement("img");
+        searchOption.appendChild(image);
+        image.classList.add("image");
+        image.src = element.imageElement;
+
+        const searchProductInfo = document.createElement("div");
+        searchOption.appendChild(searchProductInfo);
+        image.classList.add("searchProductInfo");
+
+        const name = document.createElement("a");
+        name.innerText = element.nameElement;
+        searchProductInfo.appendChild(name);
+        image.classList.add("name");
+
+        const description = document.createElement("p");
+        description.innerText = element.descriptionElement;
+        searchProductInfo.appendChild(description);
+        image.classList.add("description");
+
+        const cost = document.createElement("p");
+        cost.innerText = element.costElement;
+        searchProductInfo.appendChild(cost);
+        image.classList.add("cost");
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     sparadeVarorCounter = document.getElementById('sparadeVarorCounter');
     
@@ -45,4 +83,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 addSparadeVaror(obj);
         });
     });
+    drawSparadeVaror();
 });
