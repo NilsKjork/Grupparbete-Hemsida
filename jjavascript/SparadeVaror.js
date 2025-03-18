@@ -18,16 +18,19 @@ function addSparadeVaror(productArray){
     }
     if (hasCopy == false){
         sparadeVaror.push(obj);
-        localStorage.setItem("sparadeVaror", sparadeVaror);
+        const serialized = JSON.stringify(sparadeVaror);
+        localStorage.setItem("sparadeVaror", serialized);
         sparadeVarorCounter.innerText = sparadeVaror.length;
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    console.log(localStorage.getItem("sparadeVaror"))
-    if (localStorage.getItem("sparadeVaror") != null){
-        sparadeVaror = localStorage.getItem("sparadeVaror");
+    sparadeVarorCounter = document.getElementById('sparadeVarorCounter');
+    
+    const localStorageSave = localStorage.getItem("sparadeVaror");
+    if (localStorageSave != null){
+        sparadeVaror = JSON.parse(localStorageSave);
+        sparadeVarorCounter.innerText = sparadeVaror.length;
     }
     const elements = document.querySelectorAll(".favoriteButton");
     elements.forEach(element => {
@@ -42,7 +45,4 @@ document.addEventListener('DOMContentLoaded', function () {
                 addSparadeVaror(obj);
         });
     });
-
-    sparadeVarorCounter = document.getElementById('sparadeVarorCounter');
-
 });
