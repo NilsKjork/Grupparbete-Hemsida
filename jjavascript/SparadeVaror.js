@@ -1,3 +1,5 @@
+import { products } from "./Sökfält.js";
+
 let sparadeVaror = [];
 let sparadeVarorCounter = null;
 

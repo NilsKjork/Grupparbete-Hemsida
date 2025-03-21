@@ -2,7 +2,7 @@ let searchResultElementParents = [];
 let shadow = undefined;
 let timer = 0;
 let searchBar = null;
-const products = [
+export const products = [
     { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/skåp_bil.png" },
     { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/skåp_bil.png" },
     { href: "products/hyllBil.html", name: "Hyll Bil", description: "Som en skåp bil. Men en hylla", cost: "205" , image: "bilder/skåp_bil.png" },
