@@ -13,22 +13,26 @@ function addSparadeVaror(productArray){
     sparadeVaror.forEach(sparad => {
         if (sparad.nameElement == obj.nameElement){
             hasCopy = true;
+            const index = sparadeVaror.indexOf(sparad);
+            sparadeVaror.splice(index, 1);
+            productArray.button.src = "../favoritKnapp/tomFavorit.png"
         }
     });
     }
     if (hasCopy == false){
         sparadeVaror.push(obj);
-        const serialized = JSON.stringify(sparadeVaror);
-        localStorage.setItem("sparadeVaror", serialized);
-        sparadeVarorCounter.innerText = sparadeVaror.length;
+        productArray.button.src = "../favoritKnapp/tomFavorit.png"
     }
+    const serialized = JSON.stringify(sparadeVaror);
+    localStorage.setItem("sparadeVaror", serialized);
+    sparadeVarorCounter.innerText = sparadeVaror.length;
 }
 
 function drawSparadeVaror(){
     const searchWrapper = document.createElement("div");
     document.body.appendChild(searchWrapper);
     searchWrapper.classList.add("searchWrapper");
-    searchWrapper.style.display = 'flex';
+    searchWrapper.style.display = "flex";
     sparadeVaror.forEach(element => {
         const searchOption = document.createElement("article");
         searchWrapper.appendChild(searchOption);
@@ -77,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     imageElement: parentOfClickedItem.querySelector('.image'),
                     nameElement: parentOfClickedItem.querySelector('.name'),
                     descriptionElement: parentOfClickedItem.querySelector('.description'),
-                    costElement: parentOfClickedItem.querySelector('.cost')
+                    costElement: parentOfClickedItem.querySelector('.cost'),
+                    button: element
                 }
                 addSparadeVaror(obj);
         });
