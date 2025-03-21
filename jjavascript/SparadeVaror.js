@@ -21,7 +21,7 @@ function addSparadeVaror(productArray){
     }
     if (hasCopy == false){
         sparadeVaror.push(obj);
-        productArray.button.src = "../favoritKnapp/tomFavorit.png"
+        productArray.button.src = "../favoritKnapp/fylldFavorit.png"
     }
     const serialized = JSON.stringify(sparadeVaror);
     localStorage.setItem("sparadeVaror", serialized);
