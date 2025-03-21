@@ -25,7 +25,6 @@ function addSparadeVaror(productArray){
 }
 
 function drawSparadeVaror(){
-    console.log("drawing")
     const searchWrapper = document.createElement("div");
     document.body.appendChild(searchWrapper);
     searchWrapper.classList.add("searchWrapper");
