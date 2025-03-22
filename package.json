@@ -1,0 +1,24 @@
+{
+  "name": "grupparbete-hemsida",
+  "version": "1.0.0",
+  "main": "jjavascript/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node jjavascript/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NilsKjork/Grupparbete-Hemsida.git"
+  },
+  "keywords": [],
+  "author": "August, Nils, Rajeel, ChatGPT (bara lite)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NilsKjork/Grupparbete-Hemsida/issues"
+  },
+  "homepage": "https://github.com/NilsKjork/Grupparbete-Hemsida#readme",
+  "description": "KÖP VÅRA SKÅP!!!",
+  "dependencies": {
+    "open": "^10.1.0"
+  }
+}

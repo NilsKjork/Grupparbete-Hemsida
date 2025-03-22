@@ -1,5 +1,4 @@
 import { sparadeVaror } from "./SparadeVaror.js";
-let sparadeVarorr = sparadeVaror;
 
 let searchResultElementParents = [];
 let shadow = undefined;
@@ -18,14 +17,13 @@ let searchWrapper = undefined;
 function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
         let favorite = false;
-        sparadeVarorr.forEach(element => {
-            if (searchResultElementParents[index] == element){
-                buttonElemrent.src = "../favoritKnapp/fylldFavorit.png";
+        sparadeVaror.forEach(element => {
+            if (String(searchResult.name).trim().toLowerCase() == String(element.nameElement).trim().toLowerCase()) {
+                searchResultElementParents[index].buttonElement.src = "../favoritKnapp/fylldFavorit.png";
                 favorite = true;
-            }
-            else if (favorite == false){
-                buttonElemrent.src = "../favoritKnapp/tomFavorit.png";
-            }
+            } else if (favorite == false) {
+                searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
+            }            
         });
         searchWrapper.style.display = "flex";
         searchResultElementParents[index].parent.style.display = 'flex';
@@ -109,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let parent of searchWrapper.children) {
         const obj = {
             parent: parent,
-            buttonElemrent: parent.querySelector('.favoriteButton'),
+            buttonElement: parent.querySelector('.favoriteButton'),
             imageElement: parent.querySelector('.image'),
             productInfoElement: parent.querySelector('.searchProductInfo'),
             nameElement: parent.querySelector('.name'),
