@@ -1,6 +1,4 @@
-import { products } from "./Sökfält.js";
-
-let sparadeVaror = [];
+export let sparadeVaror = [];
 let sparadeVarorCounter = null;
 
 function addSparadeVaror(productArray){

@@ -1,8 +1,10 @@
+import { sparadeVaror } from "./SparadeVaror.js";
+let sparadeVarorr = sparadeVaror;
+
 let searchResultElementParents = [];
 let shadow = undefined;
-let timer = 0;
 let searchBar = null;
-export const products = [
+const products = [
     { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/skåp_bil.png" },
     { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/skåp_bil.png" },
     { href: "products/hyllBil.html", name: "Hyll Bil", description: "Som en skåp bil. Men en hylla", cost: "205" , image: "bilder/skåp_bil.png" },
@@ -15,6 +17,16 @@ let searchWrapper = undefined;
 
 function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
+        let favorite = false;
+        sparadeVarorr.forEach(element => {
+            if (searchResultElementParents[index] == element){
+                buttonElemrent.src = "../favoritKnapp/fylldFavorit.png";
+                favorite = true;
+            }
+            else if (favorite == false){
+                buttonElemrent.src = "../favoritKnapp/tomFavorit.png";
+            }
+        });
         searchWrapper.style.display = "flex";
         searchResultElementParents[index].parent.style.display = 'flex';
         searchResultElementParents[index].imageElement.src = searchResult.image;
@@ -97,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let parent of searchWrapper.children) {
         const obj = {
             parent: parent,
+            buttonElemrent: parent.querySelector('.favoriteButton'),
             imageElement: parent.querySelector('.image'),
             productInfoElement: parent.querySelector('.searchProductInfo'),
             nameElement: parent.querySelector('.name'),
