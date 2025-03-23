@@ -1,13 +1,18 @@
+import chalk from 'chalk';
+
 export let sparadeVaror = [];
+let favoritKnappar = [];
 let sparadeVarorCounter = null;
 
 function addSparadeVaror(productArray){
     let hasCopy = false;
     const obj = {
-        imageElement: productArray.imageElement.src,
-        nameElement: productArray.nameElement.innerText,
-        descriptionElement: productArray.descriptionElement.innerText,
-        costElement: productArray.costElement.innerText
+        origin: productArray.origin,
+        imageElement: productArray.imageElement,
+        nameElement: productArray.nameElement,
+        descriptionElement: productArray.descriptionElement,
+        costElement: productArray.costElement,
+        button: productArray.button
     }
     if (sparadeVaror != null){
     sparadeVaror.forEach(sparad => {
@@ -15,12 +20,22 @@ function addSparadeVaror(productArray){
             hasCopy = true;
             const index = sparadeVaror.indexOf(sparad);
             sparadeVaror.splice(index, 1);
+            favoritKnappar.forEach(element => {
+                if (obj.nameElement == element.nameElement){
+                    element.button.src = "../favoritKnapp/tomFavorit.png";
+                }
+            });
             productArray.button.src = "../favoritKnapp/tomFavorit.png"
         }
     });
     }
     if (hasCopy == false){
         sparadeVaror.push(obj);
+        favoritKnappar.forEach(element => {
+            if (obj.nameElement == element.nameElement){
+                productArray.button.src = "../favoritKnapp/fylldFavorit.png"
+            }
+        });
         productArray.button.src = "../favoritKnapp/fylldFavorit.png"
     }
     const serialized = JSON.stringify(sparadeVaror);
@@ -39,6 +54,16 @@ function drawSparadeVaror(){
         searchOption.classList.add("searchOption");
         searchOption.style.display = 'flex';
 
+        const origin = document.createElement("div");
+        origin.innerText = "javascript";
+        searchOption.appendChild(origin);
+        origin.classList.add("origin");
+
+        const favoriteButton = document.createElement("img");
+        searchOption.appendChild(favoriteButton);
+        favoriteButton.classList.add("favoriteButton");
+        favoriteButton.src = "../favoritKnapp/fylldFavorit.png";
+
         const image = document.createElement("img");
         searchOption.appendChild(image);
         image.classList.add("image");
@@ -46,22 +71,59 @@ function drawSparadeVaror(){
 
         const searchProductInfo = document.createElement("div");
         searchOption.appendChild(searchProductInfo);
-        image.classList.add("searchProductInfo");
+        searchProductInfo.classList.add("searchProductInfo");
 
         const name = document.createElement("a");
         name.innerText = element.nameElement;
         searchProductInfo.appendChild(name);
-        image.classList.add("name");
+        name.classList.add("name");
 
         const description = document.createElement("p");
         description.innerText = element.descriptionElement;
         searchProductInfo.appendChild(description);
-        image.classList.add("description");
+        description.classList.add("description");
 
         const cost = document.createElement("p");
         cost.innerText = element.costElement;
         searchProductInfo.appendChild(cost);
-        image.classList.add("cost");
+        cost.classList.add("cost");
+    });
+    findButtons();
+}
+
+function findButtons(){
+    const elements = document.querySelectorAll(".favoriteButton");
+    elements.forEach(element1 => {
+        let newKnap = true;
+        let parentOfClickedItem = element1.parentNode;
+        const obj = {
+            origin: parentOfClickedItem.querySelector('.origin').innerText,
+            imageElement: parentOfClickedItem.querySelector('.image').src,
+            nameElement: parentOfClickedItem.querySelector('.name').innerText,
+            descriptionElement: parentOfClickedItem.querySelector('.description').innerText,
+            costElement: parentOfClickedItem.querySelector('.cost').innerText,
+            button: element1
+        }
+        favoritKnappar.forEach(element2 => {
+            if (JSON.stringify(obj) == JSON.stringify(element2)){
+                newKnap = false;
+            }
+        });
+        if (newKnap){
+            favoritKnappar.push(obj);
+            element1.addEventListener('click', function() {
+                let parentOfClickedItem = this.parentNode;
+                const obj = {
+                    origin: parentOfClickedItem.querySelector('.origin').innerText,
+                    imageElement: parentOfClickedItem.querySelector('.image').innerText,
+                    nameElement: parentOfClickedItem.querySelector('.name').src,
+                    descriptionElement: parentOfClickedItem.querySelector('.description').innerText,
+                    costElement: parentOfClickedItem.querySelector('.cost').innerText,
+                    button: element1
+                }
+                    addSparadeVaror(obj);
+            });
+        }
     });
 }
 
@@ -73,19 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         sparadeVaror = JSON.parse(localStorageSave);
         sparadeVarorCounter.innerText = sparadeVaror.length;
     }
-    const elements = document.querySelectorAll(".favoriteButton");
-    elements.forEach(element => {
-        element.addEventListener('click', function() {
-            let parentOfClickedItem = this.parentNode;
-                const obj = {
-                    imageElement: parentOfClickedItem.querySelector('.image'),
-                    nameElement: parentOfClickedItem.querySelector('.name'),
-                    descriptionElement: parentOfClickedItem.querySelector('.description'),
-                    costElement: parentOfClickedItem.querySelector('.cost'),
-                    button: element
-                }
-                addSparadeVaror(obj);
-        });
-    });
+    findButtons();
     drawSparadeVaror();
 });

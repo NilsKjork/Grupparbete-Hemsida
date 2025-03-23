@@ -1,11 +1,16 @@
 *{
     margin: 0;
 }
-
+a:hover{
+    color: #00008b;
+}
 #brand_name{
     grid-area: bn;
     color: #483C32;
     font-family: "Kadwa", serif;
+}
+label{
+    display: none;
 }
 #search_field{
     grid-area: sf;
@@ -44,7 +49,11 @@
     width: 320px;
     height: 100px;
     border-radius: 4px;
-    background-color: #7fffd4;
+    background-color: #fff6cb;
+    outline: 3px solid #000000;
+    display: none;
+}
+.origin{
     display: none;
 }
 .favoriteButton{
@@ -63,7 +72,7 @@
 }
 #shadow{
     display: none;
-    background: black;
+    background: #000000;
     z-index: 99;
     opacity: 10%;
     height: 100vh;
