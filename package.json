@@ -4,7 +4,7 @@
   "main": "jjavascript/index.js",
   "type": "module",
   "scripts": {
-    "start": "node jjavascript/index.js"
+    "start": "vite"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,13 @@
   "homepage": "https://github.com/NilsKjork/Grupparbete-Hemsida#readme",
   "description": "KÖP VÅRA SKÅP!!!",
   "dependencies": {
+    "chalk": "^5.4.1",
+    "lottie": "^0.0.1",
+    "lottie-web": "^5.12.2",
     "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "vite": "^6.2.2"
   }
 }

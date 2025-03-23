@@ -1,33 +1,42 @@
 import { sparadeVaror } from "./SparadeVaror.js";
+import chalk from 'chalk';
+
 
 let searchResultElementParents = [];
 let shadow = undefined;
 let searchBar = null;
 const products = [
-    { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/skåp_bil.png" },
-    { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/skåp_bil.png" },
-    { href: "products/hyllBil.html", name: "Hyll Bil", description: "Som en skåp bil. Men en hylla", cost: "205" , image: "bilder/skåp_bil.png" },
-    { href: "products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" , image: "bilder/skåp_bil.png" },
-    { href: "products/skåpBil.html", name: "Skåp bil", description: "Bara en skåp bil", cost: "70" , image: "bilder/skåp_bil.png" },
-    { href: "products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" , image: "bilder/baby.png" }
+    { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/skåp_bil.png", alt: "Bild av hylla"},
+    { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/skåp_bil.png", alt: "Bild av annan hylla"},
+    { href: "products/hyllBil.html", name: "Hyllbil", description: "Som en skåpbil. Men en hylla", cost: "205" , image: "bilder/skåp_bil.png", alt: "Bild av en hyllbil"},
+    { href: "products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" , image: "bilder/skåp_bil.png", alt: "Bild av en hyllo"},
+    { href: "products/skåpBil.html", name: "Skåpbil", description: "Bara en skåpbil", cost: "70" , image: "bilder/skåp_bil.png", alt: "Bild av en skåpbil"},
+    { href: "products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" , image: "bilder/baby.png", alt: "Bild av en fight mellan en bäbis och en atombomb"}
 ];
 
 let searchWrapper = undefined;
 
 function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
-        let favorite = false;
-        sparadeVaror.forEach(element => {
-            if (String(searchResult.name).trim().toLowerCase() == String(element.nameElement).trim().toLowerCase()) {
-                searchResultElementParents[index].buttonElement.src = "../favoritKnapp/fylldFavorit.png";
-                favorite = true;
-            } else if (favorite == false) {
-                searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
-            }            
-        });
+        console.log(chalk.bgGreen('Grön'));
+        if (sparadeVaror.length == 0){
+            searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
+        }   
+        else {
+            let favorite = false;
+            sparadeVaror.forEach(element => {
+                if (String(searchResult.name).trim().toLowerCase() == String(element.nameElement).trim().toLowerCase()) {
+                    searchResultElementParents[index].buttonElement.src = "../favoritKnapp/fylldFavorit.png";
+                    favorite = true;
+                } else if (favorite == false) {
+                    searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
+                }
+            });
+        }
         searchWrapper.style.display = "flex";
         searchResultElementParents[index].parent.style.display = 'flex';
         searchResultElementParents[index].imageElement.src = searchResult.image;
+        searchResultElementParents[index].imageElement.alt = searchResult.alt;
         searchResultElementParents[index].nameElement.innerText = searchResult.name;
         searchResultElementParents[index].nameElement.href = searchResult.href;
         searchResultElementParents[index].descriptionElement.innerText = searchResult.description;
