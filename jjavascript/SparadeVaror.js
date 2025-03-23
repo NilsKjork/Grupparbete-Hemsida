@@ -21,8 +21,9 @@ function addSparadeVaror(productArray){
             const index = sparadeVaror.indexOf(sparad);
             sparadeVaror.splice(index, 1);
             favoritKnappar.forEach(element => {
-                if (obj.nameElement == element.nameElement){
-                    element.button.src = "../favoritKnapp/tomFavorit.png";
+                let parentOfClickedItem = element.parentNode;
+                if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
+                    element.src = "../favoritKnapp/tomFavorit.png";
                 }
             });
             productArray.button.src = "../favoritKnapp/tomFavorit.png"
@@ -32,8 +33,9 @@ function addSparadeVaror(productArray){
     if (hasCopy == false){
         sparadeVaror.push(obj);
         favoritKnappar.forEach(element => {
-            if (obj.nameElement == element.nameElement){
-                productArray.button.src = "../favoritKnapp/fylldFavorit.png"
+            let parentOfClickedItem = element.parentNode;
+            if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
+                element.src = "../favoritKnapp/fylldFavorit.png"
             }
         });
         productArray.button.src = "../favoritKnapp/fylldFavorit.png"
@@ -44,13 +46,17 @@ function addSparadeVaror(productArray){
 }
 
 function drawSparadeVaror(){
-    const searchWrapper = document.createElement("div");
-    document.body.appendChild(searchWrapper);
-    searchWrapper.classList.add("searchWrapper");
-    searchWrapper.style.display = "flex";
+    favoritKnappar.forEach(element => {
+        let parentOfItem = element.parentNode;
+        if (parentOfItem.querySelector('.origin').innerText == "javascript"){
+            const index = favoritKnappar.indexOf(element);
+            favoritKnappar.splice(index, 1);
+            parentOfItem.parentNode.removeChild(parentOfItem);
+        }
+    });
     sparadeVaror.forEach(element => {
         const searchOption = document.createElement("article");
-        searchWrapper.appendChild(searchOption);
+        document.body.appendChild(searchOption);
         searchOption.classList.add("searchOption");
         searchOption.style.display = 'flex';
 
@@ -95,33 +101,25 @@ function findButtons(){
     const elements = document.querySelectorAll(".favoriteButton");
     elements.forEach(element1 => {
         let newKnap = true;
-        let parentOfClickedItem = element1.parentNode;
-        const obj = {
-            origin: parentOfClickedItem.querySelector('.origin').innerText,
-            imageElement: parentOfClickedItem.querySelector('.image').src,
-            nameElement: parentOfClickedItem.querySelector('.name').innerText,
-            descriptionElement: parentOfClickedItem.querySelector('.description').innerText,
-            costElement: parentOfClickedItem.querySelector('.cost').innerText,
-            button: element1
-        }
         favoritKnappar.forEach(element2 => {
-            if (JSON.stringify(obj) == JSON.stringify(element2)){
+            if (element1 == element2){
                 newKnap = false;
             }
         });
         if (newKnap){
-            favoritKnappar.push(obj);
+            favoritKnappar.push(element1);
             element1.addEventListener('click', function() {
                 let parentOfClickedItem = this.parentNode;
                 const obj = {
                     origin: parentOfClickedItem.querySelector('.origin').innerText,
-                    imageElement: parentOfClickedItem.querySelector('.image').innerText,
-                    nameElement: parentOfClickedItem.querySelector('.name').src,
+                    imageElement: parentOfClickedItem.querySelector('.image').src,
+                    nameElement: parentOfClickedItem.querySelector('.name').innerText,
                     descriptionElement: parentOfClickedItem.querySelector('.description').innerText,
                     costElement: parentOfClickedItem.querySelector('.cost').innerText,
                     button: element1
                 }
                     addSparadeVaror(obj);
+                    drawSparadeVaror();
             });
         }
     });
