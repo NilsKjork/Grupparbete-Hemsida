@@ -2,6 +2,7 @@ import chalk from 'chalk';
 
 export let sparadeVaror = [];
 let favoritKnappar = [];
+let måladeVaror = [];
 let sparadeVarorCounter = null;
 
 function addSparadeVaror(productArray){
@@ -45,16 +46,16 @@ function addSparadeVaror(productArray){
     sparadeVarorCounter.innerText = sparadeVaror.length;
 }
 
-function drawSparadeVaror(){
-    favoritKnappar.forEach(element => {
-        let parentOfItem = element.parentNode;
-        if (parentOfItem.querySelector('.origin').innerText == "javascript"){
-            const index = favoritKnappar.indexOf(element);
-            favoritKnappar.splice(index, 1);
-            parentOfItem.parentNode.removeChild(parentOfItem);
-        }
+export function draw(varor){
+    måladeVaror.forEach(element => {
+        console.log(chalk.bgRedBright("jag dödade nyss") + element)
+        const index = favoritKnappar.indexOf(element.querySelector('.favoriteButton'));
+        favoritKnappar.splice(index, 1);
+        const indexes = måladeVaror.indexOf(element);
+        måladeVaror.splice(indexes, 1);
+        element.parentNode.removeChild(element);
     });
-    sparadeVaror.forEach(element => {
+    varor.forEach(element => {
         const searchOption = document.createElement("article");
         document.body.appendChild(searchOption);
         searchOption.classList.add("searchOption");
@@ -93,6 +94,7 @@ function drawSparadeVaror(){
         cost.innerText = element.costElement;
         searchProductInfo.appendChild(cost);
         cost.classList.add("cost");
+        måladeVaror.push(searchOption);
     });
     findButtons();
 }
@@ -119,7 +121,7 @@ function findButtons(){
                     button: element1
                 }
                     addSparadeVaror(obj);
-                    drawSparadeVaror();
+                    draw(sparadeVaror);
             });
         }
     });
@@ -134,5 +136,5 @@ document.addEventListener('DOMContentLoaded', function () {
         sparadeVarorCounter.innerText = sparadeVaror.length;
     }
     findButtons();
-    drawSparadeVaror();
+    draw(sparadeVaror);
 });
