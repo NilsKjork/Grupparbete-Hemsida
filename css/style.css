@@ -9,6 +9,10 @@ a:hover{
     color: #483C32;
     font-family: "Kadwa", serif;
 }
+#Shopping_Cart{
+    grid-area: sc;
+    margin-top: 30px;
+}
 label{
     display: none;
 }
@@ -106,13 +110,13 @@ body{
     height: 90vh;
     padding-left: 16px;
     padding-right: 16px;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 30% 60% 10%;
     grid-template-rows: 10% 4% 1% 42.5% 42.5%;
     grid-template-areas: 
-    "bn bn"
-    "sf sf"
-    "sa sa"
-    "pw1 pw1"
-    "pw2 pw2"
+    "bn bn sc"
+    "sf sf sf"
+    "sa sa sa"
+    "pw1 pw1 pw1"
+    "pw2 pw2 pw2"
     ;
 }

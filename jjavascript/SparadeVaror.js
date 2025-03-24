@@ -38,10 +38,10 @@ function addSparadeVaror(productArray){
         favoritKnappar.forEach(element => {
             let parentOfClickedItem = element.parentNode;
             if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
-                element.src = "../favoritKnapp/fylldFavorit.png"
+                element.src = "../bilder/icons/favoritKnapp/fylldFavorit.png"
             }
         });
-        productArray.button.src = "../favoritKnapp/fylldFavorit.png"
+        productArray.button.src = "../bilder/icons/favoritKnapp/fylldFavorit.png"
     }
     const serialized = JSON.stringify(sparadeVaror);
     localStorage.setItem("sparadeVaror", serialized);
