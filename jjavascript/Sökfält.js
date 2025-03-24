@@ -20,16 +20,16 @@ function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
         console.log(chalk.bgGreen('Grön'));
         if (sparadeVaror.length == 0){
-            searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
+            searchResultElementParents[index].buttonElement.src = "../bilder/icons/favoritKnapp/tomFavorit.png";
         }   
         else {
             let favorite = false;
             sparadeVaror.forEach(element => {
                 if (String(searchResult.name).trim().toLowerCase() == String(element.nameElement).trim().toLowerCase()) {
-                    searchResultElementParents[index].buttonElement.src = "../favoritKnapp/fylldFavorit.png";
+                    searchResultElementParents[index].buttonElement.src = "../bilder/icons/favoritKnapp/fylldFavorit.png";
                     favorite = true;
                 } else if (favorite == false) {
-                    searchResultElementParents[index].buttonElement.src = "../favoritKnapp/tomFavorit.png";
+                    searchResultElementParents[index].buttonElement.src = "../bilder/icons/favoritKnapp/tomFavorit.png";
                 }
             });
         }
