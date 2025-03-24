@@ -2,17 +2,16 @@ import chalk from 'chalk';
 
 export let sparadeVaror = [];
 let favoritKnappar = [];
-let måladeVaror = [];
 let sparadeVarorCounter = null;
 
 function addSparadeVaror(productArray){
     let hasCopy = false;
     const obj = {
-        origin: productArray.origin,
-        imageElement: productArray.imageElement,
-        nameElement: productArray.nameElement,
-        descriptionElement: productArray.descriptionElement,
-        costElement: productArray.costElement,
+        origin: productArray.origin.innerText,
+        imageElement: productArray.imageElement.src,
+        nameElement: productArray.nameElement.innerText,
+        descriptionElement: productArray.descriptionElement.innerText,
+        costElement: productArray.costElement.innerText,
         button: productArray.button
     }
     if (sparadeVaror != null){
@@ -25,6 +24,9 @@ function addSparadeVaror(productArray){
                 let parentOfClickedItem = element.parentNode;
                 if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
                     element.src = "../favoritKnapp/tomFavorit.png";
+                    if (obj.origin == "javascript"){
+                        productArray.origin.parentNode.parentNode.removeChild(productArray.origin.parentNode);
+                    }
                 }
             });
             productArray.button.src = "../favoritKnapp/tomFavorit.png"
@@ -47,19 +49,10 @@ function addSparadeVaror(productArray){
 }
 
 export function draw(varor){
-    måladeVaror.forEach(element => {
-        console.log(chalk.bgRedBright("jag dödade nyss") + element)
-        const index = favoritKnappar.indexOf(element.querySelector('.favoriteButton'));
-        favoritKnappar.splice(index, 1);
-        const indexes = måladeVaror.indexOf(element);
-        måladeVaror.splice(indexes, 1);
-        element.parentNode.removeChild(element);
-    });
     varor.forEach(element => {
         const searchOption = document.createElement("article");
         document.body.appendChild(searchOption);
         searchOption.classList.add("searchOption");
-        searchOption.style.display = 'flex';
 
         const origin = document.createElement("div");
         origin.innerText = "javascript";
@@ -94,7 +87,6 @@ export function draw(varor){
         cost.innerText = element.costElement;
         searchProductInfo.appendChild(cost);
         cost.classList.add("cost");
-        måladeVaror.push(searchOption);
     });
     findButtons();
 }
@@ -113,15 +105,14 @@ function findButtons(){
             element1.addEventListener('click', function() {
                 let parentOfClickedItem = this.parentNode;
                 const obj = {
-                    origin: parentOfClickedItem.querySelector('.origin').innerText,
-                    imageElement: parentOfClickedItem.querySelector('.image').src,
-                    nameElement: parentOfClickedItem.querySelector('.name').innerText,
-                    descriptionElement: parentOfClickedItem.querySelector('.description').innerText,
-                    costElement: parentOfClickedItem.querySelector('.cost').innerText,
+                    origin: parentOfClickedItem.querySelector('.origin'),
+                    imageElement: parentOfClickedItem.querySelector('.image'),
+                    nameElement: parentOfClickedItem.querySelector('.name'),
+                    descriptionElement: parentOfClickedItem.querySelector('.description'),
+                    costElement: parentOfClickedItem.querySelector('.cost'),
                     button: element1
                 }
-                    addSparadeVaror(obj);
-                    draw(sparadeVaror);
+                    addSparadeVaror(obj);        
             });
         }
     });

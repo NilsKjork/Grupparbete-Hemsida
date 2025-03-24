@@ -4,7 +4,7 @@
     border-radius: 4px;
     background-color: #fff6cb;
     outline: 3px solid #000000;
-    display: none;
+    display: flex;
 }
 .origin{
     display: none;
