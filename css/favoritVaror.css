@@ -1,0 +1,25 @@
+.searchOption{
+    width: 320px;
+    height: 100px;
+    border-radius: 4px;
+    background-color: #fff6cb;
+    outline: 3px solid #000000;
+    display: flex;
+}
+.origin{
+    display: none;
+}
+.favoriteButton{
+    position: absolute;
+    left: 15;
+    width: 40px;
+    height: 40px;
+}
+.image{
+    height: 100px;
+    width: 100px;
+    border-radius: 4px;
+}
+.searchProductInfo{
+    padding: 4px;
+}

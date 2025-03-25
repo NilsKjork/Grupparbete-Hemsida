@@ -1,11 +1,20 @@
 *{
     margin: 0;
 }
-
+a:hover{
+    color: #00008b;
+}
 #brand_name{
     grid-area: bn;
     color: #483C32;
     font-family: "Kadwa", serif;
+}
+#Shopping_Cart{
+    grid-area: sc;
+    margin-top: 30px;
+}
+label{
+    display: none;
 }
 #search_field{
     grid-area: sf;
@@ -44,13 +53,22 @@
     width: 320px;
     height: 100px;
     border-radius: 4px;
-    background-color: aquamarine;
+    background-color: #fff6cb;
+    outline: 3px solid #000000;
     display: none;
+}
+.origin{
+    display: none;
+}
+.favoriteButton{
+    position: absolute;
+    left: 15;
+    width: 40px;
+    height: 40px;
 }
 .image{
     height: 100px;
     width: 100px;
-    background-color: blue;
     border-radius: 4px;
 }
 .searchProductInfo{
@@ -58,7 +76,7 @@
 }
 #shadow{
     display: none;
-    background: black;
+    background: #000000;
     z-index: 99;
     opacity: 10%;
     height: 100vh;
@@ -103,13 +121,13 @@ body{
     height: 90vh;
     padding-left: 16px;
     padding-right: 16px;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 30% 60% 10%;
     grid-template-rows: 10% 4% 1% 42.5% 42.5%;
     grid-template-areas: 
-    "bn bn"
-    "sf sf"
-    "sa sa"
-    "pw1 pw1"
-    "pw2 pw2"
+    "bn bn sc"
+    "sf sf sf"
+    "sa sa sa"
+    "pw1 pw1 pw1"
+    "pw2 pw2 pw2"
     ;
 }
