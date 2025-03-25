@@ -23,13 +23,13 @@ function addSparadeVaror(productArray){
             favoritKnappar.forEach(element => {
                 let parentOfClickedItem = element.parentNode;
                 if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
-                    element.src = "../favoritKnapp/tomFavorit.png";
+                    element.src = "/bilder/icons/favoritKnapp/tomFavorit.png";
                     if (obj.origin == "javascript"){
                         productArray.origin.parentNode.parentNode.removeChild(productArray.origin.parentNode);
                     }
                 }
             });
-            productArray.button.src = "../favoritKnapp/tomFavorit.png"
+            productArray.button.src = "/bilder/icons/favoritKnapp/tomFavorit.png"
         }
     });
     }
@@ -38,10 +38,10 @@ function addSparadeVaror(productArray){
         favoritKnappar.forEach(element => {
             let parentOfClickedItem = element.parentNode;
             if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
-                element.src = "../bilder/icons/favoritKnapp/fylldFavorit.png"
+                element.src = "/bilder/icons/favoritKnapp/fylldFavorit.png"
             }
         });
-        productArray.button.src = "../bilder/icons/favoritKnapp/fylldFavorit.png"
+        productArray.button.src = "/bilder/icons/favoritKnapp/fylldFavorit.png"
     }
     const serialized = JSON.stringify(sparadeVaror);
     localStorage.setItem("sparadeVaror", serialized);
@@ -62,7 +62,7 @@ export function draw(varor){
         const favoriteButton = document.createElement("img");
         searchOption.appendChild(favoriteButton);
         favoriteButton.classList.add("favoriteButton");
-        favoriteButton.src = "../favoritKnapp/fylldFavorit.png";
+        favoriteButton.src = "/bilder/icons/favoritKnapp/fylldFavorit.png";
 
         const image = document.createElement("img");
         searchOption.appendChild(image);
