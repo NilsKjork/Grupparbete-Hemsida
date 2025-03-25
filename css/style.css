@@ -97,13 +97,24 @@ label{
     width: 80vw;
     margin-top: 20px;
 }
-.product{
+a {
+    text-decoration: none; /* Remove underline */
+    display: block; /* Make the <a> tag behave like a block-level element */
+}
+
+.product {
     width: 13vw;
     height: 13vw;
     background-color: #D9D9D9;
     outline: 3px solid #000000;
     margin-top: 3vw;
+    transition: transform 0.3s ease; /* Optional: Adding a hover effect */
 }
+
+.product:hover {
+    transform: scale(1.05); /* Optional: Slight zoom effect on hover */
+}
+
 body{
     background-color: #FAF0E6;
     display: grid;
