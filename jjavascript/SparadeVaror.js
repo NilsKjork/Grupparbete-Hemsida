@@ -66,7 +66,8 @@ export function draw(varor){
             const favoriteButton = document.createElement("img");
             searchOption.appendChild(favoriteButton);
             favoriteButton.classList.add("favoriteButton");
-            favoriteButton.src = "/bilder/icons/favoritKnapp/fylldFavorit.png";
+            favoriteButton.src = "/bilder/icons/minus.png";
+            favoriteButton.style.cursor = "pointer";
 
             const image = document.createElement("img");
             searchOption.appendChild(image);
