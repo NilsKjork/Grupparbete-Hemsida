@@ -9,6 +9,7 @@ function addSparadeVaror(productArray){
     const obj = {
         origin: productArray.origin.innerText,
         imageElement: productArray.imageElement.src,
+        imageAlt: productArray.imageElement.imageAlt,
         nameElement: productArray.nameElement.innerText,
         descriptionElement: productArray.descriptionElement.innerText,
         costElement: productArray.costElement.innerText,
@@ -68,11 +69,13 @@ export function draw(varor){
             favoriteButton.classList.add("favoriteButton");
             favoriteButton.src = "/bilder/icons/minus.png";
             favoriteButton.style.cursor = "pointer";
+            favoriteButton.alt = "ta bort från varukorg";
 
             const image = document.createElement("img");
             searchOption.appendChild(image);
             image.classList.add("image");
             image.src = element.imageElement;
+            image.alt = element.imageAlt;
 
             const searchProductInfo = document.createElement("div");
             searchOption.appendChild(searchProductInfo);

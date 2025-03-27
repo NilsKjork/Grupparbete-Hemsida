@@ -7,6 +7,8 @@ let buyButton = null;
 document.addEventListener('DOMContentLoaded', function () {
     buyButton = document.getElementById('buy_button');
     buyButton.addEventListener('click', function(){
-        alert("Du köpte" + JSON.stringify(sparadeVaror));
+        sparadeVaror.forEach(element =>{     
+            alert("Du köpte" + JSON.stringify(element.nameElement));
+        });
     });
 });
