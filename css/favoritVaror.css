@@ -69,6 +69,11 @@ body{
     padding: 4px;
 }
 #buy_button{
-    position: absolute;
-    bottom: 0;
+    width: 150px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgb(110, 164, 29);
+    margin: 30px;
+    
 }

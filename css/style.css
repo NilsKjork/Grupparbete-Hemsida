@@ -115,6 +115,10 @@ a {
     transform: scale(1.05); /* Optional: Slight zoom effect on hover */
 }
 
+#buy_button{
+    display: none;
+}
+
 body{
     background-color: #FAF0E6;
     display: grid;

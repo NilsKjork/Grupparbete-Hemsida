@@ -96,6 +96,10 @@ export function draw(varor){
             searchProductInfo.appendChild(cost);
             cost.classList.add("cost");
         });
+            const buy_button = document.createElement("button");
+            buy_button.innerText = "KÖP!💰";
+            document.body.appendChild(buy_button);
+            buy_button.id = "buy_button";
         findButtons();
     }
 }
