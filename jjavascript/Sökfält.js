@@ -1,5 +1,4 @@
 import { sparadeVaror } from "./SparadeVaror.js";
-import chalk from 'chalk';
 
 
 let searchResultElementParents = [];
@@ -18,7 +17,6 @@ let searchWrapper = undefined;
 
 function applySearchResult(index, searchResult) {
     if(searchResultElementParents[index] != null){
-        console.log(chalk.bgGreen('Grön'));
         if (sparadeVaror.length == 0){
             searchResultElementParents[index].buttonElement.src = "../bilder/icons/favoritKnapp/tomFavorit.png";
         }   

@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 export let sparadeVaror = [];
 let favoritKnappar = [];
 let sparadeVarorCounter = null;
