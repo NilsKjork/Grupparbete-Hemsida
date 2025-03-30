@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 export let sparadeVaror = [];
 let favoritKnappar = [];
 let sparadeVarorCounter = null;
@@ -9,6 +7,7 @@ function addSparadeVaror(productArray){
     const obj = {
         origin: productArray.origin.innerText,
         imageElement: productArray.imageElement.src,
+        imageAlt: productArray.imageElement.imageAlt,
         nameElement: productArray.nameElement.innerText,
         descriptionElement: productArray.descriptionElement.innerText,
         costElement: productArray.costElement.innerText,
@@ -49,46 +48,58 @@ function addSparadeVaror(productArray){
 }
 
 export function draw(varor){
-    varor.forEach(element => {
-        const searchOption = document.createElement("article");
-        document.body.appendChild(searchOption);
-        searchOption.classList.add("searchOption");
+    if (varor.length != 0){
+        const searchWrapper = document.createElement("div");
+        document.body.appendChild(searchWrapper);
+        searchWrapper.id = "searchWrapper";
+        varor.forEach(element => {
+            const searchOption = document.createElement("article");
+            searchWrapper.appendChild(searchOption);
+            searchOption.classList.add("searchOption");
 
-        const origin = document.createElement("div");
-        origin.innerText = "javascript";
-        searchOption.appendChild(origin);
-        origin.classList.add("origin");
+            const origin = document.createElement("div");
+            origin.innerText = "javascript";
+            searchOption.appendChild(origin);
+            origin.classList.add("origin");
 
-        const favoriteButton = document.createElement("img");
-        searchOption.appendChild(favoriteButton);
-        favoriteButton.classList.add("favoriteButton");
-        favoriteButton.src = "/bilder/icons/favoritKnapp/fylldFavorit.png";
+            const favoriteButton = document.createElement("img");
+            searchOption.appendChild(favoriteButton);
+            favoriteButton.classList.add("favoriteButton");
+            favoriteButton.src = "/bilder/icons/minus.png";
+            favoriteButton.style.cursor = "pointer";
+            favoriteButton.alt = "ta bort från varukorg";
 
-        const image = document.createElement("img");
-        searchOption.appendChild(image);
-        image.classList.add("image");
-        image.src = element.imageElement;
+            const image = document.createElement("img");
+            searchOption.appendChild(image);
+            image.classList.add("image");
+            image.src = element.imageElement;
+            image.alt = element.imageAlt;
 
-        const searchProductInfo = document.createElement("div");
-        searchOption.appendChild(searchProductInfo);
-        searchProductInfo.classList.add("searchProductInfo");
+            const searchProductInfo = document.createElement("div");
+            searchOption.appendChild(searchProductInfo);
+            searchProductInfo.classList.add("searchProductInfo");
 
-        const name = document.createElement("a");
-        name.innerText = element.nameElement;
-        searchProductInfo.appendChild(name);
-        name.classList.add("name");
+            const name = document.createElement("a");
+            name.innerText = element.nameElement;
+            searchProductInfo.appendChild(name);
+            name.classList.add("name");
 
-        const description = document.createElement("p");
-        description.innerText = element.descriptionElement;
-        searchProductInfo.appendChild(description);
-        description.classList.add("description");
+            const description = document.createElement("p");
+            description.innerText = element.descriptionElement;
+            searchProductInfo.appendChild(description);
+            description.classList.add("description");
 
-        const cost = document.createElement("p");
-        cost.innerText = element.costElement;
-        searchProductInfo.appendChild(cost);
-        cost.classList.add("cost");
-    });
-    findButtons();
+            const cost = document.createElement("p");
+            cost.innerText = element.costElement;
+            searchProductInfo.appendChild(cost);
+            cost.classList.add("cost");
+        });
+            const buy_button = document.createElement("button");
+            buy_button.innerText = "KÖP!💰";
+            document.body.appendChild(buy_button);
+            buy_button.id = "buy_button";
+        findButtons();
+    }
 }
 
 function findButtons(){

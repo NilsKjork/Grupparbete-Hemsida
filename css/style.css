@@ -1,6 +1,23 @@
 *{
     margin: 0;
 }
+noscript{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-size: 700%;
+    font-weight: 900;
+    left: 0;
+    animation: blinker 0.1s linear infinite;
+}
+@keyframes blinker {
+    0% {
+      background-color: red;
+    }
+    100%{
+        background-color: green;
+    }
+}
 a:hover{
     color: #00008b;
 }
@@ -9,11 +26,16 @@ a:hover{
     color: #483C32;
     font-family: "Kadwa", serif;
 }
+#sparadeVarorCounter{
+    display: none;
+}
 #Shopping_Cart{
     grid-area: sc;
     margin-top: 30px;
+    display: none;
 }
-label{
+#search_field_label{
+    grid-area: sfw;
     display: none;
 }
 #search_field{
@@ -30,6 +52,7 @@ label{
     width: 350px;
     z-index: 1000;
     position: relative;
+    display: none;
 }
 #search_field::placeholder{
     color: #000000;
@@ -67,8 +90,6 @@ label{
     height: 40px;
 }
 .image{
-    height: 100px;
-    width: 100px;
     border-radius: 4px;
 }
 .searchProductInfo{
@@ -115,6 +136,10 @@ a {
     transform: scale(1.05); /* Optional: Slight zoom effect on hover */
 }
 
+#buy_button{
+    display: none;
+}
+
 body{
     background-color: #FAF0E6;
     display: grid;
@@ -122,9 +147,10 @@ body{
     padding-left: 16px;
     padding-right: 16px;
     grid-template-columns: 30% 60% 10%;
-    grid-template-rows: 10% 4% 1% 42.5% 42.5%;
+    grid-template-rows: 12% 3% 5% 1% 39.5% 39.5%;
     grid-template-areas: 
     "bn bn sc"
+    "sfw sfw sfw"
     "sf sf sf"
     "sa sa sa"
     "pw1 pw1 pw1"
