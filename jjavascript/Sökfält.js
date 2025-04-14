@@ -1,16 +1,15 @@
 import { sparadeVaror } from "./SparadeVaror.js";
 
-
 let searchResultElementParents = [];
 let shadow = undefined;
 let searchBar = null;
 const products = [
-    { href: "/products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/hylla.jpg", alt: "Bild av hylla"},
-    { href: "/products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/annan_hylla.jpg", alt: "Bild av annan hylla"},
-    { href: "/products/hyllBil.html", name: "Hyllbil", description: "Som en skåpbil. Men en hylla", cost: "205" , image: "bilder/hyll_bil.jpg", alt: "Bild av en hyllbil"},
-    { href: "/products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" , image: "bilder/hyllo.jpg", alt: "Bild av en hyllo"},
-    { href: "/products/skåpBil.html", name: "Skåpbil", description: "Bara en skåpbil", cost: "70" , image: "bilder/skåp_bil.png", alt: "Bild av en skåpbil"},
-    { href: "/products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" , image: "bilder/baby.png", alt: "Bild av en fight mellan en bäbis och en atombomb"}
+    { href: "products/hylla.html", name: "Hylla", description: "Väldigt cool hylla", cost: "20", image: "bilder/hylla.jpg", alt: "Bild av hylla"},
+    { href: "products/annanHylla.html", name: "Annan hylla", description: "Även väldigt cool hylla", cost: "25" ,image: "bilder/annan_hylla.jpg", alt: "Bild av annan hylla"},
+    { href: "products/hyllBil.html", name: "Hyllbil", description: "Som en skåpbil. Men en hylla", cost: "205" , image: "bilder/hyll_bil.jpg", alt: "Bild av en hyllbil"},
+    { href: "products/hyllo.html", name: "Hyllo", description: "En kvinlig hylla", cost: "25" , image: "bilder/hyllo.jpg", alt: "Bild av en hyllo"},
+    { href: "products/skåpBil.html", name: "Skåpbil", description: "Bara en skåpbil", cost: "70" , image: "bilder/skåp_bil.png", alt: "Bild av en skåpbil"},
+    { href: "products/coughingBaby.html", name: "Coughing baby", description: "Defeted a atom bomb!", cost: "420" , image: "bilder/baby.png", alt: "Bild av en fight mellan en bäbis och en atombomb"}
 ];
 
 let searchWrapper = undefined;
@@ -110,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
             shadow.style.display = "none";
         }
     });
-
     for (let parent of searchWrapper.children) {
         const obj = {
             parent: parent,

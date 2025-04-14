@@ -1,5 +1,5 @@
-import { draw } from "./SparadeVaror";
-import { sparadeVaror } from "./SparadeVaror";
+import { draw } from "./SparadeVaror.js";
+import { sparadeVaror } from "./SparadeVaror.js";
 draw(sparadeVaror);
 
 let buyButton = null;
