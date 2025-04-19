@@ -20,7 +20,6 @@ let productWrapperElementParents = [];
         obj.buttonElement.style.display = 'flex';
         productWrapperElementParents.push(obj);
     }
-    console.log(productWrapperElementParents);
 productWrapperElementParents.forEach(product => {
     let found = false;
     sparadeVaror.forEach(vara => {

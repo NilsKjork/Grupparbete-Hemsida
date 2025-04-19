@@ -20,8 +20,8 @@ function addSparadeVaror(productArray){
             const index = sparadeVaror.indexOf(sparad);
             sparadeVaror.splice(index, 1);
             favoritKnappar.forEach(element => {
-                let parentOfClickedItem = element.parentNode;
-                if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
+                const parentArticle = element.closest("article");
+                if (obj.nameElement == parentArticle.querySelector('.name').innerText){
                     element.src = "/bilder/icons/favoritKnapp/tomFavorit.png";
                     if (obj.origin == "javascript"){
                         productArray.origin.parentNode.parentNode.removeChild(productArray.origin.parentNode);
@@ -35,8 +35,8 @@ function addSparadeVaror(productArray){
     if (hasCopy == false){
         sparadeVaror.push(obj);
         favoritKnappar.forEach(element => {
-            let parentOfClickedItem = element.parentNode;
-            if (obj.nameElement == parentOfClickedItem.querySelector('.name').innerText){
+            const parentArticle = element.closest("article");
+            if (obj.nameElement == parentArticle.querySelector('.name').innerText){
                 element.src = "/bilder/icons/favoritKnapp/fylldFavorit.png"
             }
         });
@@ -113,19 +113,19 @@ function findButtons(){
         });
         if (newKnap){
             favoritKnappar.push(element1);
-            element1.addEventListener('click', function() {
-                let parentOfClickedItem = this.parentNode;
-                const obj = {
-                    origin: parentOfClickedItem.querySelector('.origin'),
-                    imageElement: parentOfClickedItem.querySelector('.image'),
-                    nameElement: parentOfClickedItem.querySelector('.name'),
-                    descriptionElement: parentOfClickedItem.querySelector('.description'),
-                    costElement: parentOfClickedItem.querySelector('.cost'),
-                    button: element1
-                }
-                    addSparadeVaror(obj);        
-            });
-        }
+                element1.addEventListener('click', function() {
+                    const parentArticle = this.closest("article");
+                    const obj = {
+                        origin: parentArticle.querySelector('.origin'),
+                        imageElement: parentArticle.querySelector('.image'),
+                        nameElement: parentArticle.querySelector('.name'),
+                        descriptionElement: parentArticle.querySelector('.description'),
+                        costElement: parentArticle.querySelector('.cost'),
+                        button: element1
+                    };
+                    addSparadeVaror(obj);
+                });            
+            }
     });
 }
 

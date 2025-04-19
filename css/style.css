@@ -144,6 +144,7 @@ a {
 .BoxesSearchOption{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     font-size: large;
     flex: 1;
 }
@@ -169,8 +170,12 @@ a {
 }
 
 .BoxesName{
-    font-size: x-large;
+    font-size: 25px;
     display: inline;
+}
+
+.BoxesDescription{
+    display: none;
 }
 
 body{
